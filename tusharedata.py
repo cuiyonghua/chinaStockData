@@ -17,3 +17,8 @@ class TushareData:
         allStockList = self.tusharePro.stock_basic(exchange_id='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
         return allStockList
 
+    def getStockDetailInfo(self, ts_code, startDate, endDate):
+        api = ts.pro_api(self._token)
+        stockDetail = ts.pro_bar(pro_api=api, ts_code=ts_code, adj='qfq', start_date=startDate, end_date=endDate)
+        return stockDetail
+
